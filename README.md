@@ -15,8 +15,8 @@ A robust Flutter application demonstrating Clean Architecture principles, integr
 
 |   |   |
 |---|---|
-| ![Screenshot 1](assets/screenshots/Screenshot_20260109_184736.png) | ![Screenshot 2](assets/screenshots/Screenshot_20260109_184754.png) |
-| ![Screenshot 3](assets/screenshots/Screenshot_20260109_184825.png) | ![Screenshot 4](assets/screenshots/Screenshot_20260109_185001.png) |
+| ![Screenshot 1](assets/screenshots/Screenshot_20260109_184736.png) | ![Screenshot 2](assets/screenshots/Screenshot_20260109_184825.png) |
+| ![Screenshot 3](assets/screenshots/Screenshot_20260109_185001.png) | |
 
 ## 🛠️ Getting Started
 
