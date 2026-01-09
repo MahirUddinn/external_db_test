@@ -42,8 +42,60 @@ Follow these steps to get a local copy up and running.
     ```
 
 3.  **Setup the Backend**
-    -   Navigate to the backend directory (if included in this repo) or ensure your Node.js server is running.
+    -   Navigate to the backend directory or ensure your Node.js server is running.
     -   Update `lib/core/api_constants.dart` with your local IP address or server URL.
+    -   Set up the PostgreSQL database and update the connection details in the backend.
+    
+    **Step 1: Create the Table**
+    ```sql
+    CREATE TABLE item_dtl
+    (
+        item_id               BIGINT GENERATED ALWAYS AS IDENTITY,
+        item_code             VARCHAR(20),
+        item_barcode          VARCHAR(50),
+        item_name             VARCHAR(550) NOT NULL,
+        item_name_bn          VARCHAR(400),
+        item_des              VARCHAR(650),
+        item_stock            NUMERIC(18,6) DEFAULT 0,
+        item_sales_price      NUMERIC(18,6) DEFAULT 0,
+        item_general_discount NUMERIC(18,6),
+        item_pur_price        NUMERIC(18,6) DEFAULT 0,
+        item_sell_cost_pct    NUMERIC(18,6) DEFAULT 15,
+        CONSTRAINT item_dtl_pk PRIMARY KEY (item_id)
+    );
+
+    CREATE INDEX idx_item_dtl_item_code ON item_dtl(item_code);
+    CREATE INDEX idx_item_dtl_item_name ON item_dtl(item_name);
+    CREATE INDEX idx_item_dtl_item_barcode ON item_dtl(item_barcode);
+    ```
+
+    **Step 2: Insert Test Data**
+    ```sql
+    INSERT INTO item_dtl
+    (
+        item_code,
+        item_barcode,
+        item_name,
+        item_name_bn,
+        item_des,
+        item_stock,
+        item_sales_price,
+        item_general_discount,
+        item_pur_price
+    )
+    VALUES
+    (
+        'ITM001',
+        '8901234567890',
+        'Test Item',
+        'টেস্ট আইটেম',
+        'Sample item for PostgreSQL identity test',
+        100.500,
+        250.75,
+        10.00,
+        200.00
+    );
+    ```
 
 4.  **Run the App**
     ```bash
